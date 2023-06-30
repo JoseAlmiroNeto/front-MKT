@@ -36,12 +36,12 @@ const Modal = ({ isOpen, onClose, children }: IModal) => {
           <div className="flex items-center justify-center min-h-screen px-4 text-center">
             <div className="absolute inset-0 bg-gray-500 opacity-75" />
 
-            <div className="h-[50rem] w-[42rem] relative inline-block align-bottom bg-white rounded-lg overflow-hidden shadow-xl transform transition-all">
+            <div className="h-[34rem] w-[30rem] 2xl:h-[50rem] 2xl:w-[42rem] relative inline-block align-bottom bg-white rounded-lg overflow-hidden shadow-xl transform transition-all">
               <button
                 onClick={closeModal}
                 className="absolute top-0 right-0 p-3"
               >
-                <AiOutlineClose className="w-6 h-6"/>
+                <AiOutlineClose className="2xl:w-6 2xl:h-6"/>
               </button>
               {children}
             </div>

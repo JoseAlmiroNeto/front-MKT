@@ -1,12 +1,14 @@
 "use client";
 
+import { BiFilterAlt } from "react-icons/bi";
+import { DownloadCard } from "./cards/DowloadCard";
 import { ButtonTransparent } from "./buttons/ButtonTransparent";
 import { CardVideo } from "./cards/CardVideo";
 import { useState } from "react";
 import { Player } from "../components/Player";
 import VideosData from "../utils/video.json";
+
 import Modal from "./modal/Modal";
-import { DownloadCard } from "./cards/DowloadCard";
 
 export function Videos() {
   const [selectedVideo, setSelectedVideo] = useState({
@@ -16,6 +18,7 @@ export function Videos() {
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+
   const videosPerPage = 9;
   const totalPages = Math.ceil(VideosData.videos.length / videosPerPage);
 
@@ -68,8 +71,12 @@ export function Videos() {
 
   return (
     <section className="py-10 w-full flex flex-col items-center">
-      <div className="h-24 flex items-center justify-center space-x-24 border-b-2">
-        <div className="space-x-3.5">
+      {/* botoes de filtragem */}
+      <div className="h-24 w-[90%] flex items-center justify-between border-b-2 xl:w-[58rem] 2xl:w-[70rem]">
+        <button className="lg:hidden">
+          <BiFilterAlt className="h-8 w-8 hover:text-gray-700" />
+        </button>
+        <div className="space-x-3 hidden lg:block">
           <ButtonTransparent text="Agência" active={true} />
           <ButtonTransparent text="Chatbot" active={false} />
           <ButtonTransparent text="Marketing Digital" active={false} />
@@ -89,42 +96,52 @@ export function Videos() {
         </div>
       </div>
 
-      <div
-        className="w-full h-[62rem] flex flex-wrap justify-around py-4 border-b-2 
-        xl:w-[73rem]
-        "
-      >
+      {/* map dos videos */}
+      <div className="w-full h-auto flex flex-wrap justify-evenly py-4 gap-4 border-b-2 xl:xl:w-[58rem] xl:gap-4 2xl:w-[73rem]">
         {currentVideos.map((video, index) => (
           <CardVideo
             OnClick={() => openModal(video.title, video.url, video.description)}
             key={index}
             title={video.title}
-            url={video.url}
           />
         ))}
       </div>
 
-      <div className="h-20 flex items-center space-x-8">
-        <p className="text-xl font-semibold">Pagina</p>
+      {/* paginação */}
+      <div className="h-20 w-[90%] flex items-center justify-center space-x-8 scrollbar overflow-x-auto">
+        <p className="text-xl font-semibold hidden sm:block">Página</p>
         {renderPageNumbers()}
       </div>
 
+      {/* modal contendo os videos com as informações */}
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <div className="h-full w-full flex flex-col items-center">
-          <h1 className="h-32 w-96 text-2xl font-bold flex items-center">
+        <div className="h-full w-full flex flex-col items-center overflow-y-scroll scrollbar">
+          <h1 className="py-6 w-full px-8 text-xs xl:text-sm 2xl:h-32 2xl:text-2xl font-bold flex items-center">
             Webinar: {selectedVideo.title}
           </h1>
-          <Player url={selectedVideo.url} />
+
+          <Player url={selectedVideo.url} height="50%" />
+
           <div className="w-full px-8 py-4 space-y-2">
-            <p className="text-start font-bold pb-2 border-b">Descrição</p>
-            <p className="text-start">{selectedVideo.description}</p>
+            <p className="text-start font-bold pb-2 border-b text-xs 2xl:text-base">
+              Descrição
+            </p>
+            <p className="text-start text-xs xl:text-base">
+              {selectedVideo.description}
+            </p>
           </div>
+
           <div className="w-full px-8 py-4 space-y-2">
-            <p className="text-start font-bold pb-2 border-b">Downloads</p>
-            <div className="flex space-x-4">
+            <p className="text-start font-bold pb-2 border-b text-xs 2xl:text-base">
+              Downloads
+            </p>
+            <div className="flex flex-col gap-2 sm:space-x-4 md:flex-row">
               <DownloadCard title="Spredsheet.xls" className="bg-green-100" />
               <DownloadCard title="Document.doc" className="bg-blue-100" />
-              <DownloadCard title="Presentation.ppt" className="bg-yellow-100" />
+              <DownloadCard
+                title="Presentation.ppt"
+                className="bg-yellow-100"
+              />
             </div>
           </div>
         </div>

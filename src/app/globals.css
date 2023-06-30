@@ -22,3 +22,20 @@
   transform: translateY(-20px);
   transition: opacity 300ms, transform 300ms;
 }
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: transparent;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #f0f8ff;
+    border-radius: 100vh;
+  }
+}

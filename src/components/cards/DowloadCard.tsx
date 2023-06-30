@@ -7,11 +7,11 @@ interface IDownloadCard {
 
 export function DownloadCard({ title, className }: IDownloadCard) {
   return (
-    <div
-      className={`flex items-center py-2 px-4 rounded-lg space-x-2 ${className}`}
+    <button
+      className={`flex items-center py-2 px-4 rounded-lg space-x-2 text-[10px] 2xl:text-base ${className}`}
     >
       <AiOutlineCloudDownload />
       <p>{title}</p>
-    </div>
+    </button>
   );
 }
