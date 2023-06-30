@@ -6,7 +6,7 @@ import { Videos } from '@/components/Videos'
 
 export default function Home() {
   return (
-    <main className='min-h-screen w-full flex flex-col items-center'>
+    <main className='min-h-screen w-full flex flex-col items-center leading-relaxed'>
       <Header />
       <Slogan />
       <Videos />
