@@ -19,7 +19,7 @@ export function Videos() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const videosPerPage = 9;
+  const videosPerPage = 6;
   const totalPages = Math.ceil(VideosData.videos.length / videosPerPage);
 
   const handleClickPage = (pageNumbers: number) => {
@@ -76,6 +76,7 @@ export function Videos() {
         <button className="lg:hidden">
           <BiFilterAlt className="h-8 w-8 hover:text-gray-700" />
         </button>
+
         <div className="space-x-3 hidden lg:block">
           <ButtonTransparent text="Agência" active={true} />
           <ButtonTransparent text="Chatbot" active={false} />
@@ -85,7 +86,7 @@ export function Videos() {
         </div>
 
         <div className="flex items-center space-x-2">
-          <p className="text-base font-semibold">Ordenar por</p>
+          <p className="text-base font-semibold hidden sm:block">Ordenar por</p>
           <select
             name=""
             id=""
