@@ -8,11 +8,10 @@ export function Slogan() {
         WEBINARS EXCLUSIVOS
       </p>
 
-      <div className="w-[44rem] flex flex-col items-center border-b-2">
+      <div className="w-[95%] md:w-[44rem] flex flex-col items-center border-b-2">
         <h2 className="text-2xl sm:text-2xl md:text-4xl xl:text-5xl">Menos Conversinha,</h2>
         <h1 className="text-4xl relative font-extrabold text-blue-600 sm:text-4xl md:text-6xl xl:text-[5.3rem]">
           Mais Conversão
-          {/* <Image src={Asset} alt="asset-header" className="absolute top-0 right-0 pt-4" /> */}
         </h1>
       </div>
 
